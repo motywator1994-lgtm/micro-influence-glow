@@ -22,6 +22,12 @@ import {
 import heroBg from '@/assets/hero-bg.jpg';
 import workflowIllustration from '@/assets/workflow-illustration.jpg';
 import viralInfographic from '@/assets/viral-infographic.jpg';
+import { Hero3DScene } from '@/components/3d/FloatingElements';
+import { ViralEffect } from '@/components/sections/ViralEffect';
+import { CaseStudies } from '@/components/sections/CaseStudies';
+import { StatsSection } from '@/components/sections/StatsSection';
+import { AdvantagesSection } from '@/components/sections/AdvantagesSection';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -73,6 +79,7 @@ const LandingPage = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background/60 to-secondary/20"></div>
+        <Hero3DScene />
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <h1 className={`text-5xl md:text-7xl font-bold mb-6 text-gradient animate-fade-in-up ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             Twoja marka, widoczna tam, gdzie ludzie oglądają filmy
@@ -105,18 +112,6 @@ const LandingPage = () => {
             >
               Kontakt
             </Button>
-          </div>
-        </div>
-        
-        {/* Floating elements */}
-        <div className="absolute top-20 left-10 animate-float">
-          <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-            <Play className="h-6 w-6 text-primary" />
-          </div>
-        </div>
-        <div className="absolute bottom-32 right-16 animate-float" style={{ animationDelay: '2s' }}>
-          <div className="w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center">
-            <TrendingUp className="h-8 w-8 text-secondary" />
           </div>
         </div>
       </section>
@@ -164,45 +159,11 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section id="benefits" className="py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Korzyści reklamy</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Odkryj dlaczego setki marek wybiera nasze rozwiązanie do promocji w mediach społecznościowych
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="card-gradient shadow-card hover:shadow-hero transition-all duration-300 hover:-translate-y-1 group">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 mb-4 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                    <benefit.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="mt-16 text-center">
-            <Card className="card-gradient shadow-hero inline-block">
-              <CardContent className="p-8">
-                <img 
-                  src={viralInfographic} 
-                  alt="Efekt viralu - 10 milionów wyświetleń" 
-                  className="mx-auto max-w-lg w-full rounded-lg mb-6"
-                />
-                <h3 className="text-2xl font-bold text-gradient mb-2">10 milionów wyświetleń</h3>
-                <p className="text-muted-foreground">Średni zasięg naszych kampanii dzięki powtarzalności przekazu</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <ViralEffect />
+      <CaseStudies />
+      <StatsSection />
+      <AdvantagesSection />
+      <TestimonialsSection />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-muted/30">
